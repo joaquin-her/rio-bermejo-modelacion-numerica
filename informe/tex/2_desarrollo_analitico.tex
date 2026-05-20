@@ -1,0 +1,45 @@
+\section{Desarrollo Analítico}
+
+En esta sección se analiza la propagación de los errores inherentes de los coeficientes $a$, $b$ y $c$ de forma analítica. Para ello, se considera a las raíces $x_1$ y $x_2$ como funciones de dichos coeficientes y se utiliza el cálculo diferencial para determinar la sensibilidad de los resultados ante variaciones en los datos de entrada.
+
+\subsection{Derivadas Parciales de la Raíz $x_1$}
+
+Se calculan las derivadas parciales de la función $x_1(a, b, c) = \frac{-b + \sqrt{b^2 - 4ac}}{2a}$ respecto a cada uno de sus coeficientes. Estas representan los coeficientes de sensibilidad:
+
+\begin{itemize}
+    \item Sensibilidad respecto al coeficiente $a$:
+    $$\frac{\partial x_1}{\partial a} = \frac{2ca+b\sqrt{b^2-4ac}-b^2}{2a^2\sqrt{b^2-4ac}}$$
+
+    \item Sensibilidad respecto al coeficiente $b$:
+    $$\frac{\partial x_1}{\partial b} = \frac{-\sqrt{b^2-4ac}+b}{2a\sqrt{b^2-4ac}}$$
+
+    \item Sensibilidad respecto al coeficiente $c$:
+    $$\frac{\partial x_1}{\partial c} = \frac{-1}{\sqrt{b^2-4ac}}$$
+\end{itemize}
+
+\subsection{Propagación del Error Absoluto}
+
+Utilizando el teorema de propagación de errores para el límite superior del error absoluto, se define $\Delta x_1$ como la suma de las contribuciones de cada error inherente ($i_a, i_b, i_c$) ponderadas por su respectiva sensibilidad:
+
+$$\Delta x_1 \approx \left| \frac{\partial x_1}{\partial a} \right| \cdot i_a + \left| \frac{\partial x_1}{\partial b} \right| \cdot i_b + \left| \frac{\partial x_1}{\partial c} \right| \cdot i_c$$
+
+Sustituyendo las expresiones obtenidas:
+
+$$\Delta x_1 \approx \left| \frac{2ca+b\sqrt{b^2-4ac}-b^2}{2a^2\sqrt{b^2-4ac}} \right| \cdot i_a + \left| \frac{-\sqrt{b^2-4ac}+b}{2a\sqrt{b^2-4ac}} \right| \cdot i_b + \left| \frac{-1}{\sqrt{b^2-4ac}} \right| \cdot i_c$$
+
+\subsection{Cálculo del Error Relativo}
+
+El error relativo $e1_r$ se obtiene dividiendo el error absoluto estimado por el valor escalar de la propia raíz:
+
+$$e1_r = \frac{\Delta x_1}{|x_1|}$$
+
+Sustituyendo con la fórmula resolvente invertida para facilitar la simplificación:
+
+$$e1_r \approx \left( \left| \frac{2ca+b\sqrt{b^2-4ac}-b^2}{2a^2\sqrt{b^2-4ac}} \right| \cdot i_a + \left| \frac{-\sqrt{b^2-4ac}+b}{2a\sqrt{b^2-4ac}} \right| \cdot i_b + \left| \frac{-1}{\sqrt{b^2-4ac}} \right| \cdot i_c \right) \cdot \left| \frac{2a}{-b + \sqrt{b^2 - 4ac}} \right|$$
+
+\subsection{Análisis para la Raíz $x_2$}
+
+De manera análoga, para la segunda raíz $x_2(a, b, c) = \frac{-b - \sqrt{b^2 - 4ac}}{2a}$, se obtienen las expresiones de sensibilidad y error relativo correspondientes:
+
+$$e2_r \approx \left( \left| \frac{-2ca-b\sqrt{b^2-4ac}+b^2}{2a^2\sqrt{b^2-4ac}} \right| \cdot i_a + \left| \frac{-\sqrt{b^2-4ac}-b}{2a\sqrt{b^2-4ac}} \right| \cdot i_b + \left| \frac{1}{\sqrt{b^2-4ac}} \right| \cdot i_c \right) \cdot \left| \frac{2a}{-b - \sqrt{b^2 - 4ac}} \right|$$
+

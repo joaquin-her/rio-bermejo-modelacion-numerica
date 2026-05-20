@@ -1,3 +1,20 @@
 .venv
 metodos
 .vscode
+
+# LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.dvi
+*.atfi
+*.bcf
+*.fls
+*.fdb_latexmk
+*.run.xml
+*.synctex.gz
+*.synctex
+*-SAVE-ERROR
